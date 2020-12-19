@@ -4,6 +4,7 @@
  
 FROM centos:7
 RUN yum -y install \
-	python2-devel
-        
+	   python2-devel \
+        && yum clean all
+ 
 CMD ["/bin/bash"]
