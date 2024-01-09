@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses:  actions/checkout@v4
       - uses: actions/setup-node@v3
-      - uses: github.com/hello-world-composite-action@v1.0.0
+      - uses: github.com/LeeTann/hello-world-composite-action@v1.0.0
         with:
           node-version: '14'
       - run: npm install -g bats
