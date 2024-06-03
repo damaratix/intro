@@ -1,1 +1,24 @@
-test
+name: Copy File
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you want to trigger the action on
+  workflow_dispatch: 
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Copy v3.csv to docs/v3.csv 
+        run: |
+          mkdir -p docs
+          cp v3.csv docs/v3.csv
+
+      - name: List files in docs to verify
+        run: ls -la docs
+
