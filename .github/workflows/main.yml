@@ -13,16 +13,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Copy files in A to docs dir
+      - name: Copy files in A/* to docs/ dir
         run: |
-          mkdir -p docs
-          cp A/* docs/
+         cp A/* docs/
 
       - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ secrets.GA_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add docs/*
           git commit -m 'Add  A/* to docs/'
-          git push origin main
+          git push https://x-access-token:${GA_TOKEN}@github.com/${{ github.repository }}.git main
 
