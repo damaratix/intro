@@ -1,1 +1,28 @@
-test
+name: Copy and Commit File
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you want to trigger the action on
+
+jobs:
+  copy-and-commit-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Copy fileA to docs/fileB
+        run: |
+          mkdir -p docs
+          cp v3.csv docs/v3.csv
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs/pluto.html
+          git commit -m 'Add docs/v3.csv from v3.csv main'
+          git push origin main
+
