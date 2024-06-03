@@ -13,16 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Copy fileA to docs/fileB
+      - name: Copy files in A to docs dir
         run: |
           mkdir -p docs
-          cp v3.csv docs/v3.csv
+          cp A/* docs/
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add docs/pluto.html
-          git commit -m 'Add docs/v3.csv from v3.csv main'
+          git add docs/*
+          git commit -m 'Add  A/* to docs/'
           git push origin main
 
